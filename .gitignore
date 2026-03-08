@@ -1,0 +1,45 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Maven-related
+target/
+pom.xml.tag
+pom.xml.next
+pom.xml.bak
+pom.xml.versions
+pom.xml.releaseBackup
+
+# Gradle-related
+.gradle/
+build/
+
+# Eclipse-related
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA-related
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code-related
+.vscode/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
