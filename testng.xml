@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--
+  testng.xml – TestNG suite configuration for the Insider automation framework.
+
+  Parallelism:
+    • data-provider-thread-count controls how many scenarios run concurrently.
+    • Each thread gets its own ThreadLocal WebDriver via DriverManager.
+    • Increase data-provider-thread-count to run more scenarios in parallel.
+
+  To run with Maven:
+    mvn test
+    mvn test -Dtag="C12313"
+    mvn test -Dbrowser=firefox
+    mvn test -Dbrowser=edge -Dthread.count=4
+
+-->
+<suite name="Insider Automation Suite"
+       verbose="1"
+       data-provider-thread-count="2">
+
+    <listeners>
+        <!-- Allure TestNG listener wires report generation -->
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+    <test name="Insider Home Page Tests" preserve-order="true">
+        <classes>
+            <class name="runners.TestRunner"/>
+        </classes>
+    </test>
+
+</suite>
