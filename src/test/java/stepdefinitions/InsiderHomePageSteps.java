@@ -37,7 +37,7 @@ public class InsiderHomePageSteps {
     public void theInsiderHomePageShouldBeOpened() {
         log.info("Step: Verifying Insider home page is opened");
 
-        boolean isLoaded = insiderHomePage.isHomePageLoaded();
+        boolean isLoaded = commonPage.isPageLoaded("Home Page");
         String currentUrl = commonPage.getUrl();
         String title = commonPage.getTitle();
 

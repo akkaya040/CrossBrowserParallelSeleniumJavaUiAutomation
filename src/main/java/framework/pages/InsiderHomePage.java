@@ -41,20 +41,6 @@ public class InsiderHomePage extends BasePage {
         }
     }
 
-    @Step("Check homepage loaded successfully")
-    public boolean isHomePageLoaded() {
-        try {
-            findElement(BODY);
-            String currentUrl = getCurrentUrl();
-            String title = getPageTitle();
-            log.info("Page loaded | URL: {} | Title: {}", currentUrl, title);
-            return currentUrl.contains("insider") || title.toLowerCase().contains("insider");
-        } catch (Exception e) {
-            log.error("Home page loading check is  unsuccessful: {}", e.getMessage());
-            return false;
-        }
-    }
-
     @Step("Check navigation bar is visible")
     public boolean isNavigationBarVisible() {
         try {

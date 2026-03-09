@@ -17,9 +17,11 @@ public abstract class BasePage {
 
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    /** Returns the WebDriver bound to the current thread.
+    /**
+     * Returns the WebDriver bound to the current thread.
      * Driver access (thread-safe)
-     * */
+     *
+     */
     protected WebDriver driver() {
         return DriverManager.getDriver();
     }
@@ -60,9 +62,7 @@ public abstract class BasePage {
         }
     }
 
-    // -------------------------------------------------------------------------
     // Element interaction
-    // -------------------------------------------------------------------------
 
     protected void click(By locator) {
         log.debug("Clicking element: {}", locator);
@@ -102,6 +102,22 @@ public abstract class BasePage {
         }
     }
 
+    protected void waitUntilPageLoad(int... timeout) {
+        int finalTimeout = (timeout.length > 0) ? timeout[0] : 30;
+        WaitUtils.customWait(finalTimeout)
+                .until(webDriver ->
+                        ((JavascriptExecutor) driver())
+                                .executeScript("return document.readyState")
+                                .toString()
+                                .equals("complete"));
+    }
+
+    protected void scrollToElement(By locator) {
+        WebElement element = WaitUtils.waitForVisibility(locator);
+        js().executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", element);
+        pause(1000);
+    }
+
     protected void scrollIntoView(WebElement element) {
         js().executeScript("arguments[0].scrollIntoView({behavior:'smooth',block:'center'});", element);
         pause(500);
@@ -115,8 +131,20 @@ public abstract class BasePage {
         js().executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+    protected void jsClickWithQuery(WebElement element) {
+        js().executeScript("var elem=arguments[0]; setTimeout(function() {elem.click();}, 100)", element);
+    }
+
+    protected void jsClickWithQuery(By locator) {
+        jsClickWithQuery(findElement(locator));
+    }
+
     protected void jsClick(WebElement element) {
         js().executeScript("arguments[0].click();", element);
+    }
+
+    protected void jsClick(By locator) {
+        jsClick(findElement(locator));
     }
 
     protected String jsGetText(WebElement element) {
@@ -138,4 +166,17 @@ public abstract class BasePage {
             Thread.currentThread().interrupt();
         }
     }
+
+    protected void hoverElement(WebElement element) {
+        actions().moveToElement(element).perform();
+    }
+
+    protected void hoverElement(By locator) {
+        hoverElement(findElement(locator));
+    }
+
+    protected boolean isNullOrEmpty(String param) {
+        return param == null || param.trim().isEmpty();
+    }
+
 }
