@@ -15,7 +15,9 @@ public class CommonSteps {
 
     private static final Logger log = LoggerFactory.getLogger(CommonSteps.class);
 
-    /** Her senaryo thread'i kendi page instance'ını alır. */
+    /**
+     * Each thread to get its own instance.
+     */
     private final CommonPage commonPage = new CommonPage();
 
 
@@ -23,6 +25,13 @@ public class CommonSteps {
     @Step("wait for {int} seconds")
     public void waitForSeconds(int second) {
         commonPage.waitForSeconds(second);
+    }
+
+    @And("fail test on this step")
+    @Step("Verify to get screenshot on fail.")
+    public void failTestOnThisStep() {
+        assertFail("Verify to get screenshot on fail.");
+        log.info("Verify to get screenshot on fail.");
     }
 
 }
