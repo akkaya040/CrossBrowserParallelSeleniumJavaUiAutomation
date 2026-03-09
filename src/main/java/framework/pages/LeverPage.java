@@ -6,14 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import static framework.pages.constants.InsiderHomePageConstants.BODY;
 import static framework.pages.constants.LeverPageConstants.*;
 import static framework.utils.Assertions.*;
 import static framework.utils.WaitUtils.waitForAllVisible;
-
 
 public class LeverPage extends BasePage {
 
@@ -77,7 +75,6 @@ public class LeverPage extends BasePage {
         };
     }
 
-
     public void verifyLeverFilteredJobsContains(String expectedData) {
 
         List<WebElement> jobs = waitForAllVisible(LISTED_POSITIONS);
@@ -96,7 +93,7 @@ public class LeverPage extends BasePage {
 
     public void verifyPageForwardedToTheApplicationPage() {
         String pageTitle = getCurrentUrl();
-        assertContains(pageTitle,"https://jobs.lever.co/insiderone","Page forward is not working properly!");
+        assertContains(pageTitle, "https://jobs.lever.co/insiderone", "Page forward is not working properly!");
         log.info("Page is forwarded successfully.");
     }
 }

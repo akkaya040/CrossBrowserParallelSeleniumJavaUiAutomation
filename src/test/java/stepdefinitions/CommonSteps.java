@@ -1,10 +1,7 @@
 package stepdefinitions;
 
 import framework.pages.CommonPage;
-import framework.pages.InsiderHomePage;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +16,6 @@ public class CommonSteps {
      * Each thread to get its own instance.
      */
     private final CommonPage commonPage = new CommonPage();
-
 
     @And("wait for {int} seconds")
     @Step("wait for {int} seconds")

@@ -1,12 +1,9 @@
 package stepdefinitions;
 
-import framework.pages.CommonPage;
-import framework.pages.InsiderCareerPage;
 import framework.pages.LeverPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +25,7 @@ public class LeverPageSteps {
         log.info("Step: Verifying Insider careers page is opened");
 
         boolean isLoaded = leverPage.isLeverPageLoaded();
-        assertTrue(isLoaded,  "Lever page did not load correctly.");
+        assertTrue(isLoaded, "Lever page did not load correctly.");
     }
 
     @And("Select : lever job filters")

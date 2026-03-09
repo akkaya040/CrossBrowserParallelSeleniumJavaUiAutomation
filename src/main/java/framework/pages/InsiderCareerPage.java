@@ -1,8 +1,6 @@
 package framework.pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
-
 
 import static framework.pages.constants.InsiderCareerPageConstants.*;
 import static framework.utils.Assertions.assertTrue;
