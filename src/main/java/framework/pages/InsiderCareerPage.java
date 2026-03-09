@@ -9,10 +9,10 @@ import java.util.List;
 
 import static framework.pages.constants.InsiderHomePageConstants.*;
 
-public class InsiderHomePage extends BasePage {
+public class InsiderCareerPage extends BasePage {
 
 
-    @Step("Navigate : to '{url}'")
+    @Step("Navigate to '{url}'")
     public void open(String url) {
         log.info("Insider homepage: {}", url);
         navigateTo(url);
@@ -41,8 +41,8 @@ public class InsiderHomePage extends BasePage {
         }
     }
 
-    @Step("Check homepage loaded successfully")
-    public boolean isHomePageLoaded() {
+    @Step("Check career page loaded successfully")
+    public boolean isCareerPageLoaded() {
         try {
             findElement(BODY);
             String currentUrl = getCurrentUrl();
